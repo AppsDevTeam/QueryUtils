@@ -6,8 +6,8 @@ use Doctrine\ORM;
 
 
 /**
- * @property-read ORM\Query\Expr\Composite $expr Generated Doctrine ORM Expr object.
- * @property-read array $parameters Generated parameters. Index is parameter name.
+ * @method ORM\Query\Expr\Composite getExpr() Generated Doctrine ORM Expr object.
+ * @method array getParameters() Generated parameters. Index is parameter name.
  */
 class BaseQuery extends \Nette\Object {
 
