@@ -9,7 +9,9 @@ use Doctrine\ORM;
  * @method ORM\Query\Expr\Composite getExpr() Generated Doctrine ORM Expr object.
  * @method array getParameters() Generated parameters. Index is parameter name.
  */
-class BaseQuery extends \Nette\Object {
+class BaseQuery {
+
+	use \Nette\SmartObject;
 
 	const METHOD_AND = 'and';
 	const METHOD_OR = 'or';
