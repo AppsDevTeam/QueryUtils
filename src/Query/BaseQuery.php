@@ -40,11 +40,17 @@ class BaseQuery {
 
 	/**
 	 * Use expr on given Doctrine QueryBuilder.
-	 * @param ORM\QueryBuilder $queryBuilder Query builder to use expr on.
-	 * @param string $method Logic method to use when binding.
+	 * @param ORM\QueryBuilder|ORM\Query\Expr\Base $bindTo Query builder or expr to use expr on.
+	 * @param string $method Logic method to use when binding to queryBuilder.
 	 */
-	public function bindExprTo(ORM\QueryBuilder $queryBuilder, $method = self::METHOD_AND) {
-		$queryBuilder->{$method . 'Where'}($this->expr);
+	public function bindExprTo($bindTo, $method = self::METHOD_AND) {
+		if ($bindTo instanceof ORM\Query\Expr\Base) {
+			$bindTo->add($this->expr);
+
+		} else {
+			// QueryBuilder
+			$bindTo->{$method . 'Where'}($this->expr);
+		}
 	}
 
 	/**
