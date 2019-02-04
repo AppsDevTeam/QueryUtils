@@ -6,8 +6,6 @@ use Doctrine\ORM;
 
 
 /**
- * @method ORM\Query\Expr\Composite getExpr() Generated Doctrine ORM Expr object.
- * @method array getParameters() Generated parameters. Index is parameter name.
  */
 class BaseQuery {
 
@@ -23,10 +21,26 @@ class BaseQuery {
 	protected $expr;
 
 	/**
+	 * @return ORM\Query\Expr\Composite
+	 */
+	public function getExpr()
+	{
+		return $this->expr;
+	}
+
+	/**
 	 * Generated parameters.
 	 * @var array Index is parameter name.
 	 */
 	protected $parameters;
+
+	/**
+	 * @return array
+	 */
+	public function getParameters()
+	{
+		return $this->parameters;
+	}
 
 	/**
 	 * BaseQuery constructor.
